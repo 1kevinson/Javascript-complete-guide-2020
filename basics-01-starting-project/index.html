@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,6 +12,9 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/styles/app.css" />
+    <!-- User **defer** or **async** to load js first without block parsing HTML -->
+    <script src="assets/scripts/vendor.js" async></script>
+    <script src="assets/scripts/app.js" async></script>
   </head>
   <body>
     <header>
@@ -29,7 +34,5 @@
       <h2 id="current-calculation">0</h2>
       <h2>Result: <span id="current-result">0</span></h2>
     </section>
-    <script src="assets/scripts/vendor.js"></script>
-    <script src="assets/scripts/app.js"></script>
   </body>
 </html>

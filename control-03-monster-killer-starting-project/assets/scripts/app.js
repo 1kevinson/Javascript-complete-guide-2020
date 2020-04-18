@@ -14,13 +14,26 @@ const LOG_EVENT_MONSTER_ATTACK = "MONSTER_ATTACK";
 const LOG_EVENT_PLAYER_HEAL = "PLAYER_ATTACK";
 const LOG_EVENT_GAME_OVER = "GAME_OVER";
 
-const enteredValue = prompt("Maximum life for you and the monster", "100");
-
-let chosenMaxLife = parseInt(enteredValue);
 let battleLog = [];
 
-if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
-  chosenMaxLife = 100;
+function getMaxLifeValues() {
+  const enteredValue = prompt("Maximum life for you and the monster", 100);
+  const chosenMaxLife = parseInt(enteredValue);
+
+  if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
+    throw { message: "Invalid user inout, not a number!" };
+  }
+  return chosenMaxLife;
+}
+
+let parsedMaxLife;
+
+try {
+  parsedMaxLife = getMaxLifeValues();
+} catch (error) {
+  throw error.message
+} finally {
+  //Everything here happens despite the error message
 }
 
 let currentMonsterHealth = chosenMaxLife;
@@ -199,6 +212,19 @@ function checkBonusLife() {
 
 function printLogHandler() {
   console.log(battleLog);
+
+  let j = 0;
+  outerWhile: do {
+    //Assign label to a loop
+    console.log("Outer", j);
+    innerFor: for (let k = 0; k < 5; k++) {
+      if (k === 3) {
+        break outerWhile; // Call label to break that loop
+      }
+      console.log("Inner", k);
+    }
+    j++;
+  } while (j < 4);
 }
 
 // Perform actions

@@ -42,7 +42,7 @@ const getComputerChoice = function () {
   }
 };
 
-const getWinner = function (cChoice, pChoice) {
+const getWinner = (cChoice, pChoice = cChoice === ROCK ? SCISSOR : DEFAULT_PLAYER_CHOICE) => {
   if (cChoice === pChoice) {
     return RESULT_DRAW;
   } else if (

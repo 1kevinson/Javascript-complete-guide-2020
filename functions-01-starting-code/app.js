@@ -91,3 +91,26 @@ startGameBtn.addEventListener("click", function start() {
 showLogsBtn.addEventListener("click", function () {
   console.log(scoreLogDatas);
 });
+
+
+// Not related to game 
+// [Rest operator]
+const sumUp = (resultHandler, ...numbers) => {
+  const validateNumber = (number) => {
+    return isNaN(number) ? 0 : number;
+  }
+
+  let sum = 0;
+  for (const num of numbers) {
+    sum += validateNumber(num);
+  }
+
+  resultHandler(sum);
+}
+
+const showResult = (result) => {
+  alert('the result is ', result)
+}
+
+
+console.log(sumUp(showResult, 1, 3, 55));

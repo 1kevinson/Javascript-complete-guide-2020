@@ -36,8 +36,8 @@ try {
   //Everything here happens despite the error message
 }
 
-let currentMonsterHealth = chosenMaxLife;
-let currentPlayerHealth = chosenMaxLife;
+let currentMonsterHealth = parsedMaxLife;
+let currentPlayerHealth = parsedMaxLife;
 
 function getBonusLife() {
   return parseInt(bonusLifeEl.innerHTML);
@@ -57,7 +57,7 @@ function resetBonusLife() {
   bonusLifeEl.innerHTML = 1;
 }
 
-adjustHealthBars(chosenMaxLife);
+adjustHealthBars(parsedMaxLife);
 
 function writeToLog(ev, val, monsterHealth, playerHealth) {
   let logEntry;
@@ -95,9 +95,9 @@ function writeToLog(ev, val, monsterHealth, playerHealth) {
 }
 
 function reset() {
-  currentPlayerHealth = chosenMaxLife;
-  currentMonsterHealth = chosenMaxLife;
-  resetGame(chosenMaxLife);
+  currentPlayerHealth = parsedMaxLife;
+  currentMonsterHealth = parsedMaxLife;
+  resetGame(parsedMaxLife);
 }
 
 function endRound() {
@@ -170,9 +170,9 @@ function strongAttackHandler() {
 function healPlayerHandler() {
   let healValue;
 
-  if (currentPlayerHealth >= chosenMaxLife - HEAL_VALUE) {
+  if (currentPlayerHealth >= parsedMaxLife - HEAL_VALUE) {
     alert("You can't heal higher than the max chose life");
-    healValue = chosenMaxLife - currentPlayerHealth;
+    healValue = parsedMaxLife - currentPlayerHealth;
   } else {
     healValue = HEAL_VALUE;
   }

@@ -2,7 +2,7 @@
 
 const defaultResult = 0;
 let currentResult = defaultResult;
-let logEntries = [];
+let logEntries = []; 
 
 function getUserNumberInput() {
   return parseInt(userInput.value);

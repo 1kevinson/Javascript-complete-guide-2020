@@ -10,63 +10,140 @@ class Product {
     this.title = title;
     this.imageUrl = image;
     this.description = description;
-    this.price = price
+    this.price = price;
   }
-
 }
 
-console.log(new Product());
+class ProductItem {
+  constructor(product) {
+    this.product = product;
+  }
 
-const productList = {
-  products: [
+  addTocart() {
+    App.addProductToCart(this.product);
+  }
+
+  render() {
+    const prodEl = document.createElement('li');
+    prodEl.className = 'product-item';
+    prodEl.innerHTML = `
+      <div>
+        <img src="${this.product.imageUrl}" alt="${this.product.title}">
+        <div class="product-item__content">
+          <h2>${this.product.title}</h2>
+          <h3>\$${this.product.price}</h3>
+          <p>${this.product.description}</p>
+          <button>Add to Cart</button>
+        </div>
+      </div>
+      `;
+    const addCartButton = prodEl.querySelector('button');
+    addCartButton.addEventListener('click', this.addTocart.bind(this));
+    return prodEl;
+  }
+}
+
+class ProductList {
+  products = [
     new Product(
-      'A Kyrie 4',
-      'https://www.basketsession.com/statics/uploads/2018/02/Nike-Kyrie-4-0-1100x604.jpg',
-      'A Kyrie 4 - Black & White',
+      'BOOKS',
+      'https://www.avenuecalgary.com/wp-content/uploads/2019/04/NextPageBookstore-960x640.jpg',
+      'Books',
       49.99
     ),
     new Product(
-      'A Kyrie 3',
-      'https://www.basketusa.com/wp-content/uploads/2017/03/Nike-Kyrie-3-1-1.jpg',
-      'A Kyrie 3 - City of guardians',
+      'PILLOW',
+      'https://media.istockphoto.com/photos/many-samples-bright-color-pillow-hanging-on-shelf-in-store-picture-id876908618?k=6&m=876908618&s=612x612&w=0&h=I68DPUPMerhQa9e5gMvLpf-6SAKYQ88LggDxS3NtamY=',
+      'Pillows',
       59.99
     ),
     new Product(
-      'A Kyrie 2',
-      'https://www.sneakers-actus.fr/wp-content/uploads/2015/12/Basket-Nike-Kyrie-Irving-2-Multicolor-1.png',
-      'A K2',
+      'COMPUTERS',
+      'https://60a99bedadae98078522-a9b6cded92292ef3bace063619038eb1.ssl.cf2.rackcdn.com/images_stores_BROOKLYNrotatorLAPTOPS2.jpg',
+      'Computers',
       59.99
     ),
-    new Product(
-      'A Kyrie 5',
-      'https://trashtalk.co/wp-content/uploads/2018/11/NIKE-KYRIE-5-6-1.jpg',
-      'A Kyrie 5 - Power of ganesha',
-      69.99
-    ),
-  ],
+  ];
+
+  constructor() {}
+
   render() {
     const renderHook = document.getElementById('app');
     const prodList = document.createElement('ul');
     prodList.className = 'product-list';
 
     for (const prod of this.products) {
-      const prodEl = document.createElement('li');
-      prodEl.className = 'product-item';
-      prodEl.innerHTML = `
-      <div>
-        <img src="${prod.imageUrl}" alt="${prod.title}">
-        <div class="product-item__content">
-          <h2>${prod.title}</h2>
-          <h3>\$${prod.price}</h3>
-          <p>${prod.description}</p>
-          <button>Add to Cart</button>
-        </div>
-      </div>
-      `;
+      const productItem = new ProductItem(prod);
+      const prodEl = productItem.render();
       prodList.append(prodEl);
     }
-    renderHook.append(prodList);
-  },
-};
+    return prodList;
+  }
+}
 
-productList.render();
+class ShoppingCart {
+  items = [];
+
+  set cartItems(value) {
+    this.items = value;
+    this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount.toFixed(
+      2
+    )}</h2>`;
+  }
+
+  get totalAmount() {
+    const sum = this.items.reduce((prevValue, curItem) => {
+      return prevValue + curItem.price;
+    }, 0);
+    return sum;
+  }
+
+  addProduct(product) {
+    const updatedItems = [...this.items];
+    updatedItems.push(product);
+    this.cartItems = updatedItems;
+  }
+
+  render() {
+    const cartEl = document.createElement('section');
+    cartEl.innerHTML = `
+      <h2>Total: \$${0}</h2>
+      <button>Order Now!</button>
+    `;
+    cartEl.className = 'cart';
+
+    this.totalOutput = cartEl.querySelector('h2');
+    return cartEl;
+  }
+}
+
+class Shop {
+  render() {
+    const renderHook = document.getElementById('app');
+
+    this.cart = new ShoppingCart();
+    const cardEl = this.cart.render();
+    const productList = new ProductList();
+    const productListEl = productList.render();
+
+    renderHook.append(cardEl);
+    renderHook.append(productListEl);
+  }
+}
+
+class App {
+  static cart;
+
+  static init() {
+    const shop = new Shop();
+    shop.render();
+    // Render then have access to cart
+    this.cart = shop.cart;
+  }
+
+  static addProductToCart(product) {
+    this.cart.addProduct(product);
+  }
+}
+
+App.init();

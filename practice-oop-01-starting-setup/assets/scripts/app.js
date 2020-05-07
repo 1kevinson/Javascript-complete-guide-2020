@@ -4,7 +4,15 @@ class Tooltip {}
 
 class ProjectItem {
   constructor(id) {
-    this.id = id; //test contributions
+    this.id = id;
+  }
+
+  connectMoreInfoButton() {}
+
+  connectSwitchButton() {
+    const projectItemElement = document.getElementById(this.id);
+    const switchBtn = projectItemElement.querySelector('button:last-of-type');
+    switchBtn.addEventListener('click',);
   }
 }
 
@@ -16,6 +24,13 @@ class ProjecList {
     for (const prjItem of prjItems) {
       this.projects.push(new ProjectItem(prjItem.id));
     }
+  }
+
+  addProject() {}
+
+  switchProject(projectId) {
+    //Filter array to remove unmatching project p
+    this.projects = this.projects.filter((p) => p.id !== projectId);
   }
 }
 

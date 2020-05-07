@@ -4,7 +4,7 @@ class Tooltip {}
 
 class ProjectItem {
   constructor(id) {
-    this.id = id;
+    this.id = id; //test contributions
   }
 }
 

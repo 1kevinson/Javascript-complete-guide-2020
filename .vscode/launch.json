@@ -8,16 +8,14 @@
       "type": "chrome",
       "request": "launch",
       "name": "Launch Chrome",
-      "url": "file:///Users/mac/Documents/Arsene/Developper/Ultimate/FrontEnd/Javascript/ninja/basics-01-starting-project/index.html",
+      "url": "file:///Users/mac/Documents/Arsene/Developper/Ultimate/FrontEnd/Javascript/ninja",
       "webRoot": "${workspaceFolder}"
     },
     {
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
+      "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/basics-01-starting-project/assets/scripts/app.js"
     }
   ]

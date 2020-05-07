@@ -17,14 +17,19 @@ class DOMHelper {
 class Tooltip {}
 
 class ProjectItem {
-  constructor(id, updateProjectListsFunction,type) {
+  constructor(id, updateProjectListsFunction, type) {
     this.id = id;
     this.updateProjectListsHandler = updateProjectListsFunction;
     this.connectMoreInfoButton();
     this.connectSwitchButton(type);
   }
 
-  connectMoreInfoButton() {}
+  connectMoreInfoButton() {
+    const projectItemElement = document.getElementById(this.id);
+    const moreInfoBtn = projectItemElement.querySelector(
+      'button:first-of-type'
+    );
+  }
 
   connectSwitchButton(type) {
     const projectItemElement = document.getElementById(this.id);

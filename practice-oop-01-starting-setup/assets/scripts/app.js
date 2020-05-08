@@ -51,7 +51,7 @@ class ProjectItem {
 
 class ProjecList {
   projects = [];
-  //test
+  //test removed from mbp3
 
   constructor(type) {
     this.type = type;

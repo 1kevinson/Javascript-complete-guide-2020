@@ -27,18 +27,18 @@ class ProjectItem {
   connectMoreInfoButton() {
     const projectItemElement = document.getElementById(this.id);
     const moreInfoBtn = projectItemElement.querySelector(
-      'button:first-of-type'
+      "button:first-of-type"
     );
   }
 
   connectSwitchButton(type) {
     const projectItemElement = document.getElementById(this.id);
-    let switchBtn = projectItemElement.querySelector('button:last-of-type');
+    let switchBtn = projectItemElement.querySelector("button:last-of-type");
     switchBtn = DOMHelper.clearEventListeners(switchBtn);
-    switchBtn.textContent = type === 'active' ? 'Finish' : 'Activate';
+    switchBtn.textContent = type === "active" ? "Finish" : "Activate";
     // Bind event click with this project Item and set parameter (this.id) to bind
     switchBtn.addEventListener(
-      'click',
+      "click",
       this.updateProjectListsHandler.bind(this, this.id)
     );
   }
@@ -83,8 +83,8 @@ class ProjecList {
 
 class App {
   static init() {
-    const activesProjectList = new ProjecList('active');
-    const finishedProjectList = new ProjecList('finished');
+    const activesProjectList = new ProjecList("active");
+    const finishedProjectList = new ProjecList("finished");
     activesProjectList.setSwitchHandlerFunction(
       finishedProjectList.addProject.bind(finishedProjectList)
     );

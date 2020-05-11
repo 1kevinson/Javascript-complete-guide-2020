@@ -35,7 +35,7 @@ class Component {
   // 'this' keyword in a simple function refer to global context
   attach() {
     this.hostElement.insertAdjacentElement(
-      this.insertBefore ? "beforebegin" : "beforeend",
+      this.insertBefore ? "afterbegin" : "beforeend",
       this.element
     );
   }

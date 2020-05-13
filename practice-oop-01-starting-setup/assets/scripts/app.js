@@ -177,6 +177,17 @@ class App {
     finishedProjectList.setSwitchHandlerFunction(
       activesProjectList.addProject.bind(activesProjectList)
     );
+
+    document
+      .getElementById("start-analytics-btn")
+      .addEventListener("click", this.startAnalytics);
+  }
+
+  static startAnalytics() {
+    const analytics = document.createElement("script");
+    analytics.src = "assets/scripts/analytic.js";
+    analytics.defer = true;
+    document.head.append(analytics);
   }
 }
 

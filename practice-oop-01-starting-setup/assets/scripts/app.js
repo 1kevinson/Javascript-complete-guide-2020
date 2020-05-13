@@ -178,9 +178,7 @@ class App {
       activesProjectList.addProject.bind(activesProjectList)
     );
 
-    document
-      .getElementById("start-analytics-btn")
-      .addEventListener("click", this.startAnalytics);
+    setTimeout(this.startAnalytics, 3000);
   }
 
   static startAnalytics() {

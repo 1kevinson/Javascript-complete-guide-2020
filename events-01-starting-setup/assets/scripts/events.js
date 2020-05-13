@@ -1,7 +1,7 @@
-const buttons = document.querySelectorAll("button");
+/*const buttons = document.querySelectorAll("button");
 
 const btnClickHandler = (event) => {
-  event.target.disabled = true;
+    event.target.disabled = true;
   const styleElementClicked = event.toElement.style;
   styleElementClicked.backgroundColor = "grey";
   styleElementClicked.border = "grey";
@@ -13,18 +13,22 @@ const anotherBtnClickHandler = () => {
   console.log("This was clicked !");
 };
 
-/*
 button.addEventListener("click", btnClickHandler);
 
 setTimeout(() => {
   button.removeEventListener("click", btnClickHandler);
 }, 3000);
-*/
 
 buttons.forEach((btn) => {
   btn.addEventListener("mouseenter", btnClickHandler);
 });
 
 window.addEventListener("scroll", (event) => {
+  console.log(event);
+});*/
+
+const form = document.querySelector("form");
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
   console.log(event);
 });

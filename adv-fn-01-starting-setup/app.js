@@ -24,7 +24,7 @@ let multiplier = 1.1;
 
 function createTaxCalculator(tax) {
   function calculateTax(amount) {
-    console.log(multiplier); // 1.2    -> Closure : every js function is a closure because it's closer to variable environnement (global variable)
+    console.log(multiplier); // 1.2    -> Closure : every js function is a closure because it's closer to variable environment (global variable)
     return amount * tax * multiplier;
   }
   return calculateTax;
@@ -37,3 +37,40 @@ multiplier = 1.2;
 
 console.log(cVatAmount(200));
 console.log(cIncomeTaxAmount(300));
+
+//Closures in practice
+let userName = "MAX";
+
+function greetUser() {
+  let name = userName;
+  console.log("Hi " + name); // Hi Manuel  || The closure concept get the latest value of a global variable
+}
+
+userName = "Manuel";
+greetUser();
+
+//recursion exemple 1
+function powerOf1(x, n) {
+  let result = 1;
+  for (let i = 0; i < n; i++) {
+    result *= x;
+  }
+  return result;
+}
+
+//recursion exemple 2
+function powerOf2(x, n) {
+  if (n === 1) {
+    return x;
+  }
+  return x * powerOf2(x, n - 1);
+}
+
+//recursion exemple 3
+function powerOf3(x, n) {
+  return n === 1 ? x : x * powerOf3(x, n - 1);
+}
+
+console.log(powerOf1(2, 4));
+console.log(powerOf2(2, 4));
+console.log(powerOf3(2, 4));

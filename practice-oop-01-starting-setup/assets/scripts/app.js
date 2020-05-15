@@ -161,6 +161,7 @@ class ProjecList {
     this.connectDroppable();
   }
 
+  //DRAG AND DROP PROCESSUS
   connectDroppable() {
     const list = document.querySelector(`#${this.type}-projects ul`);
 
@@ -181,6 +182,19 @@ class ProjecList {
       if (ev.relatedTarget.closest(`#${this.type}-projects ul`)) {
         list.parentElement.classList.remove("droppable");
       }
+    });
+
+    list.addEventListener("drop", (ev) => {
+      const prjId = ev.dataTransfer.getData("text/plain");
+      if (this.projects.find((p) => p.id === prjId)) {
+        return;
+      }
+      document
+        .getElementById(prjId)
+        .querySelector("button:last-of-type")
+        .click();
+      list.parentElement.classList.remove("droppable");
+      ev.preventDefault(); //not required
     });
   }
 

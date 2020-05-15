@@ -20,15 +20,20 @@ function addMoreNumbers(num1, num2) {
 console.log(addMoreNumbers(2, 3));
 
 //Factory functions (use a function inside a function)
+let multiplier = 1.1;
+
 function createTaxCalculator(tax) {
   function calculateTax(amount) {
-    return amount * tax;
+    console.log(multiplier); // 1.2    -> Closure : every js function is a closure because it's closer to variable environnement (global variable)
+    return amount * tax * multiplier;
   }
   return calculateTax;
 }
 
 const cVatAmount = createTaxCalculator(0.19);
-const cIcomeTaxAmount = createTaxCalculator(0.25);
+const cIncomeTaxAmount = createTaxCalculator(0.25);
+
+multiplier = 1.2;
 
 console.log(cVatAmount(200));
-console.log(cIcomeTaxAmount(300));
+console.log(cIncomeTaxAmount(300));

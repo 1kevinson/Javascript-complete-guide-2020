@@ -113,7 +113,8 @@ class ProjectItem {
   //Configuring draggable element
   connectDrag() {
     document.getElementById(this.id).addEventListener("dragstart", (ev) => {
-      ev.data.setData("text/plain", this.id);
+      console.log(ev);
+      ev.dataTransfer.setData("text/plain", this.id);
       ev.dataTransfer.effectAllowed = "move";
     });
   }
@@ -157,6 +158,30 @@ class ProjecList {
       );
     }
     console.log(this.projects);
+    this.connectDroppable();
+  }
+
+  connectDroppable() {
+    const list = document.querySelector(`#${this.type}-projects ul`);
+
+    list.addEventListener("dragenter", (ev) => {
+      if (ev.dataTransfer.types[0] === "text/plain") {
+        list.parentElement.classList.add("droppable");
+        ev.preventDefault();
+      }
+    });
+
+    list.addEventListener("dragover", (ev) => {
+      if (ev.dataTransfer.types[0] === "text/plain") {
+        ev.preventDefault();
+      }
+    });
+
+    list.addEventListener("dragleave", (ev) => {
+      if (ev.relatedTarget.closest(`#${this.type}-projects ul`)) {
+        list.parentElement.classList.remove("droppable");
+      }
+    });
   }
 
   setSwitchHandlerFunction(switchHandlerFunction) {

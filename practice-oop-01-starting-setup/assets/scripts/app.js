@@ -90,6 +90,7 @@ class ProjectItem {
     this.updateProjectListsHandler = updateProjectListsFunction;
     this.connectMoreInfoButton();
     this.connectSwitchButton(type);
+    this.connectDrag();
   }
 
   showMoreInfoHandler() {
@@ -107,6 +108,14 @@ class ProjectItem {
     );
     tooltip.attach();
     this.hasActiveTooltip = true;
+  }
+
+  //Configuring draggable element
+  connectDrag() {
+    document.getElementById(this.id).addEventListener("dragstart", (ev) => {
+      ev.data.setData("text/plain", this.id);
+      ev.dataTransfer.effectAllowed = "move";
+    });
   }
 
   connectMoreInfoButton() {

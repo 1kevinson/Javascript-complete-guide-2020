@@ -74,3 +74,46 @@ function powerOf3(x, n) {
 console.log(powerOf1(2, 4));
 console.log(powerOf2(2, 4));
 console.log(powerOf3(2, 4));
+
+//Advanced recursion
+const myself = {
+  name: "Max",
+  friends: [
+    {
+      name: "Manuel",
+      friends: [
+        {
+          name: "Chris",
+          friends: [
+            {
+              name: "harry",
+            },
+            {
+              name: "Peter",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "Julia",
+    },
+  ],
+};
+
+function printFriendNames(person) {
+  const collectedNames = [];
+
+  if (!person.friends) {
+    return [];
+  }
+
+  for (const friend of person.friends) {
+    collectedNames.push(friend.name);
+    collectedNames.push(...printFriendNames(friend)); // Use a spread operator to push single value instead of nesting an array
+  }
+
+  return collectedNames;
+}
+
+console.log(printFriendNames(myself));

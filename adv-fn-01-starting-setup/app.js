@@ -117,3 +117,11 @@ function printFriendNames(person) {
 }
 
 console.log(printFriendNames(myself));
+
+/**
+ * @desc Regular expression section
+ * @chapter  344
+ * @time 13:21
+ */
+
+const regex = new RegExp("\\S+@\\S+\\.\\S+");

@@ -62,6 +62,7 @@ async function trackUserHandlerTwo() {
     posData = await getPosition();
     timerData = await setTimer(2000);
   } catch (e) {
+    // as long you handle the error via catch() block, you can have working then() block thereafter
     console.log("message > ", e.message);
     console.log("code > ", e.code);
   }

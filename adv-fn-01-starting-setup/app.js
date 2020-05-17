@@ -110,7 +110,7 @@ function printFriendNames(person) {
 
   for (const friend of person.friends) {
     collectedNames.push(friend.name);
-    collectedNames.push(...printFriendNames(friend)); // Use a spread operator to push single value instead of nesting an array
+    collectedNames.push(...printFriendNames(friend)); // Use a spread operator to push every single value of the array instead of nesting an array
   }
 
   return collectedNames;

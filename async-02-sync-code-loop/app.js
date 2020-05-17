@@ -12,17 +12,37 @@ const setTimer = (duration) => {
   return promise;
 };
 
+//Create a promise for getting position
+const getPosition = (opts) => {
+  const promise = new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(
+      (success) => {
+        resolve(success);
+      },
+      (error) => {
+        reject(error);
+      },
+      opts
+    );
+  });
+
+  return promise;
+};
+
 function trackUserHandler() {
-  navigator.geolocation.getCurrentPosition(
-    (posData) => {
-      setTimer(2000).then((data) => {
-        console.log(data, posData);
-      });
-    },
-    (error) => {
-      console.log(error);
-    }
-  );
+  let posData;
+
+  getPosition()
+    .then((positionData) => {
+      posData = positionData;
+      return setTimer(1500);
+    })
+    .then((data) => {                    // This 'data' refer to the return of the first promise 'setTimer'
+      console.log(data, posData);
+    });
+  setTimer(1000).then(() => {
+    console.log("Timer done!");
+  });
   //This code will run first
   console.log("Getting position...");
 }

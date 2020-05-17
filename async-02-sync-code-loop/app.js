@@ -82,6 +82,20 @@ for (let i = 0; i < 100000000; i++) {
 console.log(result);
 */
 
+/* promise.race() & promise.all() */
+Promise.race([getPosition(), setTimer(100)]).then((data) => {
+  console.log(data);
+});
+
+Promise.all([getPosition(), setTimer(1000)]).then((promiseData) => {
+  console.log(promiseData);
+});
+
+// Get all logs about the promises in parameter array
+Promise.allSettled([getPosition(), setTimer(1000)]).then((promiseData) => {
+  console.log(promiseData);
+});
+
 /*
  * TYPOS
  *

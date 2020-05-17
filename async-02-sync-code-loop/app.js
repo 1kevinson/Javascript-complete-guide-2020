@@ -33,11 +33,17 @@ function trackUserHandler() {
   let posData;
 
   getPosition()
-    .then((positionData) => {
-      posData = positionData;
-      return setTimer(1500);
-    })
-    .then((data) => {                    // This 'data' refer to the return of the first promise 'setTimer'
+    .then(
+      (positionData) => {
+        posData = positionData;
+        return setTimer(1500);
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+    .then((data) => {
+      // This 'data' refer to the return of the first promise 'setTimer'
       console.log(data, posData);
     });
   setTimer(1000).then(() => {

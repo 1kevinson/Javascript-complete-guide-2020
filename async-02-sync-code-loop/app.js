@@ -40,6 +40,7 @@ function trackUserHandler() {
       },
       (error) => {
         console.log(error);
+        return "on we go...";
       }
     )
     .then((data) => {
@@ -49,11 +50,17 @@ function trackUserHandler() {
   setTimer(1000).then(() => {
     console.log("Timer done!");
   });
-  //This code will run first
+  //This code will run first  - Execution Order
   console.log("Getting position...");
 }
 
-button.addEventListener("click", trackUserHandler);
+async function trackUserHandlerTwo() {
+  const posData = await getPosition();
+  const timerData = await setTimer(2000);
+  console.log(timerData, posData);
+}
+
+button.addEventListener("click", trackUserHandlerTwo);
 
 /*
 let result = 0;
@@ -65,3 +72,13 @@ for (let i = 0; i < 100000000; i++) {
 
 console.log(result);
 */
+
+/*
+ * TYPOS
+ *
+ * async , await are always use in front of functions
+ * async in front of a function automatically allow it to return a <promise>
+ * async also wrap all the content of a function into a single promise data
+ *
+ * await is add in front of any promise
+ * */

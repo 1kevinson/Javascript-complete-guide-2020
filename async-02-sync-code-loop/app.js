@@ -55,8 +55,17 @@ function trackUserHandler() {
 }
 
 async function trackUserHandlerTwo() {
-  const posData = await getPosition();
-  const timerData = await setTimer(2000);
+  let posData;
+  let timerData;
+
+  try {
+    posData = await getPosition();
+    timerData = await setTimer(2000);
+  } catch (e) {
+    console.log("message > ", e.message);
+    console.log("code > ", e.code);
+  }
+
   console.log(timerData, posData);
 }
 

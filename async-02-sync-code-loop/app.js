@@ -2,12 +2,21 @@ const button = document.querySelector("button");
 const output = document.querySelector("p");
 
 function trackUserHandler() {
-  console.log("Clicked!");
+  navigator.geolocation.getCurrentPosition(
+    (posData) => {
+      console.log(posData);
+    },
+    (error) => {
+      console.log(error);
+    }
+  );
+  //This code will run first
+  console.log("Getting position...");
 }
 
-// Function run in second
 button.addEventListener("click", trackUserHandler);
 
+/*
 let result = 0;
 
 // For loop run first
@@ -16,3 +25,4 @@ for (let i = 0; i < 100000000; i++) {
 }
 
 console.log(result);
+*/

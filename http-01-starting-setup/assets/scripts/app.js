@@ -4,6 +4,7 @@ const form = document.querySelector("#new-post form");
 const fetchButton = document.querySelector("#available-posts button");
 const postList = document.querySelector("ul");
 
+/*
 function sendHttpRequest(method, url, data) {
   const promise = new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
@@ -31,11 +32,17 @@ function sendHttpRequest(method, url, data) {
   });
 
   return promise;
+}*/
+
+function sendHttpRequestWithFetch(method, url, data) {
+  return fetch(url).then((response) => {
+    return response.json();
+  });
 }
 
 async function fetchPosts() {
   try {
-    const responseData = await sendHttpRequest(
+    const responseData = await sendHttpRequestWithFetch(
       "GET",
       "https://jsonplaceholder.typicode.com/posts"
     );

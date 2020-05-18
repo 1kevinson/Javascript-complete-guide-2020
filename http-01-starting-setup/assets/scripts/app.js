@@ -1,5 +1,7 @@
 const listElement = document.querySelector(".posts");
 const postTemplate = document.getElementById("single-post");
+const form = document.querySelector("#new-post form");
+const fetchButton = document.querySelector("#available-posts button");
 
 function sendHttpRequest(method, url, data) {
   const promise = new Promise((resolve, reject) => {
@@ -49,8 +51,17 @@ async function createPost(title, content) {
   );
 }
 
-fetchPosts();
-createPost("YO kev", "Dummy post by Kev");
+fetchButton.addEventListener("click", () => {
+  listElement.innerHTML = "";
+  fetchPosts();
+});
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const enteredTitle = event.currentTarget.querySelector("#title").value;
+  const enteredBody = event.currentTarget.querySelector("#content").value;
+
+  createPost(enteredTitle, enteredBody);
+});
 
 /*
  * TYPO

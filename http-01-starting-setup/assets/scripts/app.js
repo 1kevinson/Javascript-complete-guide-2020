@@ -13,7 +13,18 @@ function sendHttpRequest(method, url, data) {
 
     // Asynchronous function , JS will not block code even if the data has not been retrieve yet
     xhr.onload = function () {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        resolve(xhr.response);
+      } else {
+        //Server side Error Handling
+        reject(new Error("Something went wrong..."));
+      }
       resolve(xhr.response);
+    };
+
+    xhr.onerror = function () {
+      //client side error handling (like internet connexion for example)
+      reject(new Error("Failed to send request"));
     };
 
     xhr.send(JSON.stringify(data));
@@ -23,18 +34,22 @@ function sendHttpRequest(method, url, data) {
 }
 
 async function fetchPosts() {
-  const responseData = await sendHttpRequest(
-    "GET",
-    "https://jsonplaceholder.typicode.com/posts"
-  );
+  try {
+    const responseData = await sendHttpRequest(
+      "GET",
+      "https://jsonplaceholder.typicode.com/posts"
+    );
 
-  for (const post of responseData) {
-    // Use template to set new node in DOM
-    const postEl = document.importNode(postTemplate.content, true);
-    postEl.querySelector("h2").textContent = post.title;
-    postEl.querySelector("p").textContent = post.body;
-    postEl.querySelector("li").id = post.id;
-    listElement.append(postEl);
+    for (const post of responseData) {
+      // Use template to set new node in DOM
+      const postEl = document.importNode(postTemplate.content, true);
+      postEl.querySelector("h2").textContent = post.title;
+      postEl.querySelector("p").textContent = post.body;
+      postEl.querySelector("li").id = post.id;
+      listElement.append(postEl);
+    }
+  } catch (e) {
+    console.log(new Error(e));
   }
 }
 
@@ -57,6 +72,7 @@ fetchButton.addEventListener("click", () => {
   listElement.innerHTML = "";
   fetchPosts();
 });
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const enteredTitle = event.currentTarget.querySelector("#title").value;

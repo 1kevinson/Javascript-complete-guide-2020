@@ -11,6 +11,7 @@ xhr.onload = function () {
   const listOfPosts = xhr.response;
 
   for (const post of listOfPosts) {
+    // Use template to set new node in DOM
     const postEl = document.importNode(postTemplate.content, true);
     postEl.querySelector("h2").textContent = post.title;
     postEl.querySelector("p").textContent = post.body;

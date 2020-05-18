@@ -42,7 +42,11 @@ function sendHttpRequestWithFetch(method, url, data) {
       "Content-Type": "application/json",
     },
   }).then((response) => {
-    return response.json();
+    if (response.status >= 200 && response.status < 300) {
+      return response.json();
+    } else {
+      throw new Error("Something went wrong - server-side");
+    }
   });
 }
 

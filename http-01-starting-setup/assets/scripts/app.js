@@ -35,7 +35,10 @@ function sendHttpRequest(method, url, data) {
 }*/
 
 function sendHttpRequestWithFetch(method, url, data) {
-  return fetch(url).then((response) => {
+  return fetch(url, {
+    method: method,
+    body: JSON.stringify(data),
+  }).then((response) => {
     return response.json();
   });
 }
@@ -68,7 +71,7 @@ async function createPost(title, content) {
     userId: userId,
   };
 
-  await sendHttpRequest(
+  await sendHttpRequestWithFetch(
     "POST",
     "https://jsonplaceholder.typicode.com/posts",
     post
@@ -88,11 +91,11 @@ form.addEventListener("submit", (event) => {
   createPost(enteredTitle, enteredBody);
 });
 
-// EVEN DELEGATION
 postList.addEventListener("click", (ev) => {
+  // EVEN DELEGATION
   if (ev.target.tagName === "BUTTON") {
     const postId = event.target.closest("li").id; // Get the closest ancestor
-    sendHttpRequest(
+    sendHttpRequestWithFetch(
       "DELETE",
       `https://jsonplaceholder.typicode.com/posts/${postId}`
     );
@@ -104,5 +107,6 @@ postList.addEventListener("click", (ev) => {
  *
  * ---- Use async for a function which call a promise inside him, then we are able to retrieve promise data with await  ----
  *
+ * Fetch is a built-in javascript method
  *
  * */

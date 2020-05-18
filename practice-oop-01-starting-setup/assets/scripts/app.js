@@ -98,6 +98,7 @@ class ProjectItem {
       return;
     }
     const projectElement = document.getElementById(this.id);
+    //Retrieve the data-* value in HTML 'extra-info'
     const tooltipText = projectElement.dataset.extraInfo;
     const tooltip = new Tooltip(
       () => {

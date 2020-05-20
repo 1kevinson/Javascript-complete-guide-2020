@@ -115,5 +115,7 @@ postList.addEventListener("click", (ev) => {
  * ---- Use async for a function which call a promise inside him, then we are able to retrieve promise data with await  ----
  *
  * Fetch is a built-in javascript method
+ * another good library for HTTP Request is Axiosjs
+ *
  *
  * */

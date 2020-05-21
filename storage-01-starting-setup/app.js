@@ -35,9 +35,13 @@ const retrieveCookie = document.getElementById("retrieve-cookie-btn");
 
 cookieBtn.addEventListener("click", () => {
   const userId = "u123";
+  const user = { name: "kevin", age: 27 };
   document.cookie = `uid=${userId}`; //Store cookie with template litteral
+  document.cookie = `user=${JSON.stringify(user)}`;
 });
 
 retrieveCookie.addEventListener("click", () => {
-  console.log(document.cookie);
+  const firstArray = document.cookie.split(";")[1].split("=");
+  const userCookie = JSON.parse(firstArray[1]);
+  console.log(userCookie);
 });

@@ -1,0 +1,25 @@
+>> Particular documentation
+
+- To manage a project folder initialize it with npm:
+npm init
+
+- Install development dependencies
+npm i --save-dev eslint
+
+- Linting with ESLint
+run this command to init the file:
+node_modules/.bin/eslint --init
+
+? How would you like to use ESLint? To check syntax, find problems, and enforce code style
+? What type of modules does your project use? JavaScript modules (import/export)
+? Which framework does your project use? None of these
+? Does your project use TypeScript? No
+? Where does your code run? Browser
+? How would you like to define a style for your project? Inspect your JavaScript file(s)
+? Which file(s), path(s), or glob(s) should be examined? events-01-starting-setup/assets/scripts/app.js
+? What format do you want your config file to be in? JSON
+Determining Config: 100% [==============================] 0.6s elapsed, eta 0.0s
+
+
+Enabled 269 out of 277 rules based on 1 file.
+Successfully created .eslintrc.json file in /Users/mac/Documents/Arsene/Developper/Ultimate/FrontEnd/Javascript/ninja

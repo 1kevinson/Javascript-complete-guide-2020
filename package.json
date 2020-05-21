@@ -1,0 +1,22 @@
+{
+  "name": "javascript-complete-guide",
+  "version": "1.0.0",
+  "description": "The complete Guide 2020",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kkouomeu/Javascript-complete-guide-2020.git"
+  },
+  "author": "Arsene Kevin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kkouomeu/Javascript-complete-guide-2020/issues"
+  },
+  "homepage": "https://github.com/kkouomeu/Javascript-complete-guide-2020#readme",
+  "devDependencies": {
+    "eslint": "^7.0.0"
+  }
+}

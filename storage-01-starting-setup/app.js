@@ -27,3 +27,17 @@ retrieve.addEventListener("click", () => {
 });
 
 // SessionStorage data live as long the page is open in the browser
+
+// Cookies
+
+const cookieBtn = document.getElementById("cookie-btn");
+const retrieveCookie = document.getElementById("retrieve-cookie-btn");
+
+cookieBtn.addEventListener("click", () => {
+  const userId = "u123";
+  document.cookie = `uid=${userId}`; //Store cookie with template litteral
+});
+
+retrieveCookie.addEventListener("click", () => {
+  console.log(document.cookie);
+});

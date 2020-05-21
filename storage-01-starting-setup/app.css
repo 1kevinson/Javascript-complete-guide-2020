@@ -16,6 +16,16 @@ button {
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.26);
 }
 
+[id*="cookie"] {
+  font: inherit;
+  background: #d45151;
+  color: white;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  border: 1px solid #000000;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.26);
+}
+
 button:focus {
   outline: none;
 }
@@ -24,4 +34,11 @@ button:hover,
 button:active {
   background: #7904ff;
   border-color: #7904ff;
+}
+
+[id*="cookie"]:hover,
+[id*="cookie"]:active {
+  background: #000000;
+  border-color: #d45151;
+  color: white;
 }

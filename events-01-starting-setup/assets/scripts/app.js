@@ -1,3 +1,5 @@
+import { ProjectList } from "./APP/ProjectList.js";
+
 class App {
   static init() {
     const activeProjectsList = new ProjectList("active");
@@ -27,7 +29,5 @@ class App {
 }
 
 App.init();
-
-
 
 // Install development server with npm install -g serve

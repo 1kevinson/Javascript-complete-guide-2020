@@ -45,3 +45,5 @@ retrieveCookie.addEventListener("click", () => {
   const userCookie = JSON.parse(firstArray[1]);
   console.log(userCookie);
 });
+
+// Webpack is veryusefull if we want to combine all js file in one, and also because all browser don't support "module" in html tag

@@ -1,3 +1,4 @@
+//Use export key word to define an element which could be import by another object
 export class Component {
   constructor(hostElementId, insertBefore = false) {
     if (hostElementId) {

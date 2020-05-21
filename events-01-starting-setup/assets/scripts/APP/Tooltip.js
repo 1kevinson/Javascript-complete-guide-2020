@@ -1,3 +1,6 @@
+//Import the Object Component with relative path
+import { Component } from "./Component.js";
+
 class Tooltip extends Component {
   constructor(closeNotifierFunction, text, hostElementId) {
     super(hostElementId);

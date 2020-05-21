@@ -27,3 +27,7 @@ class App {
 }
 
 App.init();
+
+
+
+// Install development server with npm install -g serve

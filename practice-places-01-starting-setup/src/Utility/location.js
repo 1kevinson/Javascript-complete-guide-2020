@@ -22,3 +22,6 @@ export async function getCoordsFromAddress(address) {
   const coordinates = data.results[0].geometry.location;
   return coordinates;
 }
+
+
+// TO copy some text content to clipboard use Clipboard API / MDN

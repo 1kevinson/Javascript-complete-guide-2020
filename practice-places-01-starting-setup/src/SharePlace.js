@@ -1,4 +1,5 @@
 import swal from "sweetalert";
+import { Modal } from "./UI/Modal.js";
 
 class PlaceFinder {
   constructor() {
@@ -14,8 +15,15 @@ class PlaceFinder {
       swal("Location is not available", "please allow geolocation", "error");
       return;
     }
+
+    const modal = new Modal(
+      "loading-modal-content",
+      "loading location - please wait!"
+    );
+    modal.show();
     navigator.geolocation.getCurrentPosition(
       (success) => {
+        modal.hide();
         const coordinates = {
           lat: success.coords.latitude + Math.random() * 50,
           lng: success.coords.longitude + Math.random() * 50,
@@ -23,6 +31,7 @@ class PlaceFinder {
         console.log(coordinates);
       },
       (error) => {
+        modal.hide();
         swal("Couldn't locate you unfortunately...", error.message);
       }
     );

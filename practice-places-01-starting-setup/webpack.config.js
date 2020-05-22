@@ -10,7 +10,7 @@ module.exports = {
   output: {
     filename: "[name].js", // name = entry name => SharePlace
     path: path.resolve(__dirname, "dist", "assets", "scripts"), //Generate js file in dis/assets/scripts
-    publicPath: "assets/scripts/", //call in hmtl <script> tag
+    publicPath: "assets/scripts/", //call in HTML <script> tag
   },
   devtool: "cheap-module-eval-source-map",
   devServer: {

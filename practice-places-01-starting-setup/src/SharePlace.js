@@ -1,13 +1,22 @@
 import swal from "sweetalert";
 import { Modal } from "./UI/Modal.js";
+import { Map } from "./UI/Map";
 
 class PlaceFinder {
   constructor() {
     const addressForm = document.querySelector("form");
     const locateUserBtn = document.getElementById("locate-btn");
 
-    locateUserBtn.addEventListener("click", this.locateUserHandler);
+    locateUserBtn.addEventListener("click", this.locateUserHandler.bind(this));
     addressForm.addEventListener("submit", this.findAddressHandler);
+  }
+
+  selectPlace(coordinates) {
+    if (this.map) {
+      this.map.render(coordinates);
+    } else {
+      this.map = new Map(coordinates);
+    }
   }
 
   locateUserHandler() {
@@ -28,7 +37,7 @@ class PlaceFinder {
           lat: success.coords.latitude + Math.random() * 50,
           lng: success.coords.longitude + Math.random() * 50,
         };
-        console.log(coordinates);
+        this.selectPlace(coordinates);
       },
       (error) => {
         modal.hide();

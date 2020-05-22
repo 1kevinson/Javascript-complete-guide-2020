@@ -46,7 +46,19 @@ class PlaceFinder {
     );
   }
 
-  findAddressHandler() {}
+  findAddressHandler(event) {
+    event.preventDefault();
+    const address = event.target.querySelector("input").value;
+    if (!address || address.trim().length === 0) {
+      swal("invalid address entered", "please try again...", "error");
+    }
+
+    const modal = new Modal(
+      "loading-modal-content",
+      "loading loaction please wait."
+    );
+    modal.show();
+  }
 }
 
 new PlaceFinder();

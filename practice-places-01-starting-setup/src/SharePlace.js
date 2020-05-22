@@ -1,6 +1,7 @@
 import swal from "sweetalert";
 import { Modal } from "./UI/Modal.js";
-import { Map } from "./UI/Map";
+import { Map } from "./UI/Map.js";
+import { getCoordsFromAddress } from "./Utility/location.js";
 
 class PlaceFinder {
   constructor() {
@@ -46,7 +47,7 @@ class PlaceFinder {
     );
   }
 
-  findAddressHandler(event) {
+  async findAddressHandler(event) {
     event.preventDefault();
     const address = event.target.querySelector("input").value;
     if (!address || address.trim().length === 0) {
@@ -58,6 +59,15 @@ class PlaceFinder {
       "loading loaction please wait."
     );
     modal.show();
+
+    try {
+      const coordinates = await getCoordsFromAddress(address);
+      this.selectPlace(coordinates);
+    } catch (e) {
+      swal(e.message);
+    }
+
+    modal.hide();
   }
 }
 

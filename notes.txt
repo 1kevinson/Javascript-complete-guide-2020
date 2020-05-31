@@ -16,7 +16,7 @@ node_modules/.bin/eslint --init
 ? Does your project use TypeScript? No
 ? Where does your code run? Browser
 ? How would you like to define a style for your project? Inspect your JavaScript file(s)
-? Which file(s), path(s), or glob(s) should be examined? events-01-starting-setup/assets/scripts/app.js
+? Which file(s), path(s), or glob(s) should be examined? events-01-starting-setup/assets/scripts/alg-1-min.js
 ? What format do you want your config file to be in? JSON
 Determining Config: 100% [==============================] 0.6s elapsed, eta 0.0s
 

@@ -1,0 +1,18 @@
+.map-box {
+    border: solid 1px black;
+    height: 40rem;
+    width: fit-content;
+}
+
+.row-cards {
+    display: inline;
+}
+
+.card-box {
+    border: solid 1px black;
+    height: 4rem;
+    width: 6rem;
+    display: inline-block;
+    align-self: center;
+    margin: 0.3rem;
+}

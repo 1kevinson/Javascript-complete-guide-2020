@@ -13,13 +13,22 @@ const analyticsData = [
 console.table(analyticsData);
 
 // GET ELEMENTS
-const rowCards = document.getElementById('row-cards');
-const cardBox = document.getElementById('card-box');
+const rowCards = document.querySelector('.row-cards');
+const map = document.querySelector('.map-box');
 
-for (let index = 0; index < analyticsData[0][1]; index++) {
+for (let index = 0; index < +analyticsData[0][1]; index++) {
+  var e = document.createElement('div');
+  e.classList.add('card-box');
+  rowCards.appendChild(e);
+}
+
+for (let x = 0; x < +analyticsData[0][2] - 1; x++) {
+  var cloneRowCards = rowCards.cloneNode(true);
+  map.appendChild(cloneRowCards);
 }
 
 console.log(rowCards);
+console.log(map);
 /* for (const data of analyticsData) {
   console.log(data);
 } */

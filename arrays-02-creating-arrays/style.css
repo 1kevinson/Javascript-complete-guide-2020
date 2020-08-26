@@ -11,14 +11,7 @@
   position: relative;
 }
 
-.card-box {
-  border: solid 1px black;
-  height: 4rem;
-  width: 6rem;
-  margin: 0.3rem;
-  display: inline-block;
-}
-
+.card-box,
 .mountain,
 .treasure,
 .adventurer {
@@ -34,6 +27,10 @@
 
 .mountain {
   background-color: rgb(202, 202, 204);
+}
+
+.mountain:hover {
+  background-color: rgb(179, 179, 182);
 }
 
 .adventurer {

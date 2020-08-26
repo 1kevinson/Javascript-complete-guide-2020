@@ -14,7 +14,7 @@ const rowCards = document.querySelector('.row-cards');
 const map = document.querySelector('.map-box');
 
 for (let i = 0; i < +analyticsData[0][1] - 1; i++) {
-  var e = document.createElement('span');
+  var e = document.createElement('div');
   e.classList.add('card-box');
   rowCards.appendChild(e);
 }

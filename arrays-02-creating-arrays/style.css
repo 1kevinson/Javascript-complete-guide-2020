@@ -18,3 +18,49 @@
   margin: 0.3rem;
   display: inline-block;
 }
+
+.mountain,
+.treasure,
+.adventurer {
+  border: solid 1px black;
+  height: 4rem;
+  width: 6rem;
+  margin: 0.25rem;
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+.mountain {
+  background-color: rgb(202, 202, 204);
+}
+
+.adventurer {
+  color: teal;
+}
+
+.treasure {
+  background: radial-gradient(
+      ellipse farthest-corner at right bottom,
+      #fedb37 0%,
+      #fdb931 8%,
+      #967733 30%,
+      #8a6e2f 40%,
+      transparent 80%
+    ),
+    radial-gradient(
+      ellipse farthest-corner at left top,
+      #ffffff 0%,
+      #ffffac 8%,
+      #d1b464 25%,
+      #81682e 62.5%,
+      #755e28 100%
+    );
+  color: white;
+}
+
+.card-text {
+  position: relative;
+  top: 35%;
+}
